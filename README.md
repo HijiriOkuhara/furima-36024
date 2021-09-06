@@ -27,11 +27,11 @@
 | ---------------------- | ---------- | ------------------------------ |
 | product_name           | string     | null: false                    |
 | product_description    | text       | null: false                    |
-| product_category       | string     | null: false                    |
-| product_state          | string     | null: false                    |
-| delivery_charge_burden | string     | null: false                    |
-| delivery_area          | string     | null: false                    |
-| delivery_days          | string     | null: false                    |
+| product_category       | integer    | null: false                    |
+| product_state          | integer    | null: false                    |
+| delivery_charge_burden | integer    | null: false                    |
+| prefectures            | integer    | null: false                    |
+| delivery_days          | integer    | null: false                    |
 | price                  | integer    | null: false                    |
 | user                   | references | null: false, foreign_key: true |
 | purchase_record        | references | foreign_key: true              |
@@ -72,7 +72,7 @@
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
 | postal_code     | string     | null: false                    |
-| prefectures     | string     | null: false                    |
+| prefectures     | integer    | null: false                    |
 | city            | string     | null: false                    |
 | block           | string     | null: false                    |
 | building_name   | string     |                                |
