@@ -19,8 +19,7 @@
 
 - has_many :products
 - has_many :comments
-- has_many :credit_cards
-- has_many :delivery_areas
+- has_many :purchase_records
 
 ## products テーブル
 
@@ -35,13 +34,13 @@
 | delivery_days          | string     | null: false                    |
 | price                  | integer    | null: false                    |
 | user                   | references | null: false, foreign_key: true |
+| purchase_record        | references | foreign_key: true              |
 
 ### Association
 
 - belongs_to :user
 - has_many :comments
-- has_one :credit_card
-- has_one :delivery_areas
+- belongs_to :purchase_record
 
 ## comments テーブル
 
@@ -56,36 +55,31 @@
 - belongs_to :product
 - belongs_to :user
 
-## credit_cards テーブル
+## purchase_records テーブル
 
 | Column                | Type       | Options                        |
 | --------------------- | ---------- | ------------------------------ |
-| card_information      | string     | null: false                    |
-| expiration_date_month | integer    | null: false                    |
-| expiration_date_year  | integer    | null: false                    |
-| security_code         | integer    | null: false                    |
 | user                  | references | null: false, foreign_key: true |
 | product               | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :product
+- has_one :product
 - belongs_to :user
+- has_one :delivery_area
 
 ## delivery_areas テーブル
 
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| postal_code   | string     | null: false                    |
-| prefectures   | string     | null: false                    |
-| city          | string     | null: false                    |
-| block         | string     | null: false                    |
-| building_name | string     |                                |
-| phone_number  | integer    | null: false                    |
-| user          | references | null: false, foreign_key: true |
-| product       | references | null: false, foreign_key: true |
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| postal_code     | string     | null: false                    |
+| prefectures     | string     | null: false                    |
+| city            | string     | null: false                    |
+| block           | string     | null: false                    |
+| building_name   | string     |                                |
+| phone_number    | integer    | null: false                    |
+| purchase_record | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :product
-- belongs_to :user
+- belongs_to :purchase_record
