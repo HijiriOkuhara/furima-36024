@@ -26,7 +26,6 @@
 
 | Column                 | Type       | Options                        |
 | ---------------------- | ---------- | ------------------------------ |
-| product_image          | text       | null: false                    |
 | product_name           | string     | null: false                    |
 | product_description    | text       | null: false                    |
 | product_category       | string     | null: false                    |
