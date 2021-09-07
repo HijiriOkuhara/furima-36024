@@ -35,31 +35,32 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :purchase_record
+- has_one :purchase_record
 
 ## purchase_records テーブル
 
-| Column                | Type       | Options                        |
-| --------------------- | ---------- | ------------------------------ |
-| user                  | references | null: false, foreign_key: true |
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| user    | references | null: false, foreign_key: true |
+| product | references | null: false, foreign_key: true |
 
 ### Association
 
-- has_one :product
+- belongs_to :product
 - belongs_to :user
 - has_one :delivery_area
 
 ## delivery_areas テーブル
 
-| Column            | Type       | Options                        |
-| ----------------- | ---------- | ------------------------------ |
-| postal_code       | string     | null: false                    |
-| prefecture_id     | integer    | null: false                    |
-| city              | string     | null: false                    |
-| block             | string     | null: false                    |
-| building_name     | string     |                                |
-| phone_number      | string     | null: false                    |
-| purchase_record   | references | null: false, foreign_key: true |
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| postal_code     | string     | null: false                    |
+| prefecture_id   | integer    | null: false                    |
+| city            | string     | null: false                    |
+| block           | string     | null: false                    |
+| building_name   | string     |                                |
+| phone_number    | string     | null: false                    |
+| purchase_record | references | null: false, foreign_key: true |
 
 ### Association
 
