@@ -31,7 +31,6 @@
 | delivery_day_id           | integer    | null: false                    |
 | price                     | integer    | null: false                    |
 | user                      | references | null: false, foreign_key: true |
-| purchase_record           | references | foreign_key: true              |
 
 ### Association
 
