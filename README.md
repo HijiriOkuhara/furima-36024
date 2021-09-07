@@ -20,18 +20,18 @@
 
 ## products テーブル
 
-| Column                 | Type       | Options                        |
-| ---------------------- | ---------- | ------------------------------ |
-| product_name           | string     | null: false                    |
-| product_description    | text       | null: false                    |
-| product_category       | integer    | null: false                    |
-| product_state          | integer    | null: false                    |
-| delivery_charge_burden | integer    | null: false                    |
-| prefectures            | integer    | null: false                    |
-| delivery_days          | integer    | null: false                    |
-| price                  | integer    | null: false                    |
-| user                   | references | null: false, foreign_key: true |
-| purchase_record        | references | foreign_key: true              |
+| Column                    | Type       | Options                        |
+| ------------------------- | ---------- | ------------------------------ |
+| product_name              | string     | null: false                    |
+| product_description       | text       | null: false                    |
+| product_category_id       | integer    | null: false                    |
+| product_state_id          | integer    | null: false                    |
+| delivery_charge_burden_id | integer    | null: false                    |
+| prefecture_id             | integer    | null: false                    |
+| delivery_day_id           | integer    | null: false                    |
+| price                     | integer    | null: false                    |
+| user                      | references | null: false, foreign_key: true |
+| purchase_record           | references | foreign_key: true              |
 
 ### Association
 
@@ -52,15 +52,15 @@
 
 ## delivery_areas テーブル
 
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| postal_code     | string     | null: false                    |
-| prefectures     | integer    | null: false                    |
-| city            | string     | null: false                    |
-| block           | string     | null: false                    |
-| building_name   | string     |                                |
-| phone_number    | string     | null: false                    |
-| purchase_record | references | null: false, foreign_key: true |
+| Column            | Type       | Options                        |
+| ----------------- | ---------- | ------------------------------ |
+| postal_code       | string     | null: false                    |
+| prefecture_id     | integer    | null: false                    |
+| city              | string     | null: false                    |
+| block             | string     | null: false                    |
+| building_name     | string     |                                |
+| phone_number      | string     | null: false                    |
+| purchase_record   | references | null: false, foreign_key: true |
 
 ### Association
 
