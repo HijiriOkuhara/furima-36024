@@ -10,4 +10,5 @@ class User < ApplicationRecord
   validates :birthday, presence: true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_many :products
 end
