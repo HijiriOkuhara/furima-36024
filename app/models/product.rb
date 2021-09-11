@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   belongs_to :user
+  has_one_attached :image
   validates :name, presence: true, length: { maximum: 40 }
   validates :description, presence: true, length: { maximum: 1000 }
   validates :category_id, presence: true
