@@ -305,6 +305,16 @@ RSpec.describe Product, type: :model do
         @product.valid?
         expect(@product.errors.full_messages).to include 'Price is not a number'
       end
+      it 'priceが300未満では出品できない' do
+        @product.price = 299
+        @product.valid?
+        expect(@product.errors.full_messages).to include "Price is not included in the list"
+      end
+      it 'priceが9999999超では出品できない' do
+        @product.price = 10000000
+        @product.valid?
+        expect(@product.errors.full_messages).to include "Price is not included in the list"
+      end
 
       it 'imageが空では出品できない' do
         @product.image = nil
@@ -315,7 +325,7 @@ RSpec.describe Product, type: :model do
       it 'userが紐付いていないと保存できない' do
         @product.user = nil
         @product.valid?
-        expect(@product.errors.full_messages).to include "User can't be blank"
+        expect(@product.errors.full_messages).to include "User must exist"
       end
     end
   end
