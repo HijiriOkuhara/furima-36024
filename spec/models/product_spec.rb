@@ -21,7 +21,7 @@ RSpec.describe Product, type: :model do
       it 'nameが41文字以上では出品できない' do
         @product.name = 'あ' * 41
         @product.valid?
-        expect(@product.errors.full_messages).to include "Name is too long (maximum is 40 characters)"
+        expect(@product.errors.full_messages).to include 'Name is too long (maximum is 40 characters)'
       end
 
       it 'descriptionが空では出品できない' do
@@ -32,7 +32,7 @@ RSpec.describe Product, type: :model do
       it 'descriptionが1001文字以上では出品できない' do
         @product.description = 'あ' * 1001
         @product.valid?
-        expect(@product.errors.full_messages).to include "Description is too long (maximum is 1000 characters)"
+        expect(@product.errors.full_messages).to include 'Description is too long (maximum is 1000 characters)'
       end
 
       it 'category_idが空では出品できない' do
@@ -43,42 +43,42 @@ RSpec.describe Product, type: :model do
       it 'category_idが1では出品できない' do
         @product.category_id = 1
         @product.valid?
-        expect(@product.errors.full_messages).to include "Category must be other than 1"
+        expect(@product.errors.full_messages).to include 'Category must be other than 1'
       end
       it 'category_idが半角英字では出品できない' do
-        @product.category_id = "a"
+        @product.category_id = 'a'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Category is not a number"
+        expect(@product.errors.full_messages).to include 'Category is not a number'
       end
       it 'category_idが全角英字では出品できない' do
-        @product.category_id = "ａ"
+        @product.category_id = 'ａ'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Category is not a number"
+        expect(@product.errors.full_messages).to include 'Category is not a number'
       end
       it 'category_idがひらがなでは出品できない' do
-        @product.category_id = "あ"
+        @product.category_id = 'あ'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Category is not a number"
+        expect(@product.errors.full_messages).to include 'Category is not a number'
       end
       it 'category_idが半角ｶﾀｶﾅでは出品できない' do
-        @product.category_id = "ｱ"
+        @product.category_id = 'ｱ'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Category is not a number"
+        expect(@product.errors.full_messages).to include 'Category is not a number'
       end
       it 'category_idが全角カタカナでは出品できない' do
-        @product.category_id = "ア"
+        @product.category_id = 'ア'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Category is not a number"
+        expect(@product.errors.full_messages).to include 'Category is not a number'
       end
       it 'category_idが漢字では出品できない' do
-        @product.category_id = "漢"
+        @product.category_id = '漢'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Category is not a number"
+        expect(@product.errors.full_messages).to include 'Category is not a number'
       end
       it 'category_idが記号では出品できない' do
-        @product.category_id = "~"
+        @product.category_id = '~'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Category is not a number"
+        expect(@product.errors.full_messages).to include 'Category is not a number'
       end
 
       it 'state_idが空では出品できない' do
@@ -89,42 +89,42 @@ RSpec.describe Product, type: :model do
       it 'state_idが1では出品できない' do
         @product.state_id = 1
         @product.valid?
-        expect(@product.errors.full_messages).to include "State must be other than 1"
+        expect(@product.errors.full_messages).to include 'State must be other than 1'
       end
       it 'state_idが半角英字では出品できない' do
-        @product.state_id = "a"
+        @product.state_id = 'a'
         @product.valid?
-        expect(@product.errors.full_messages).to include "State is not a number"
+        expect(@product.errors.full_messages).to include 'State is not a number'
       end
       it 'state_idが全角英字では出品できない' do
-        @product.state_id = "ａ"
+        @product.state_id = 'ａ'
         @product.valid?
-        expect(@product.errors.full_messages).to include "State is not a number"
+        expect(@product.errors.full_messages).to include 'State is not a number'
       end
       it 'state_idがひらがなでは出品できない' do
-        @product.state_id = "あ"
+        @product.state_id = 'あ'
         @product.valid?
-        expect(@product.errors.full_messages).to include "State is not a number"
+        expect(@product.errors.full_messages).to include 'State is not a number'
       end
       it 'state_idが半角ｶﾀｶﾅでは出品できない' do
-        @product.state_id = "ｱ"
+        @product.state_id = 'ｱ'
         @product.valid?
-        expect(@product.errors.full_messages).to include "State is not a number"
+        expect(@product.errors.full_messages).to include 'State is not a number'
       end
       it 'state_idが全角カタカナでは出品できない' do
-        @product.state_id = "ア"
+        @product.state_id = 'ア'
         @product.valid?
-        expect(@product.errors.full_messages).to include "State is not a number"
+        expect(@product.errors.full_messages).to include 'State is not a number'
       end
       it 'state_idが漢字では出品できない' do
-        @product.state_id = "漢"
+        @product.state_id = '漢'
         @product.valid?
-        expect(@product.errors.full_messages).to include "State is not a number"
+        expect(@product.errors.full_messages).to include 'State is not a number'
       end
       it 'state_idが記号では出品できない' do
-        @product.state_id = "~"
+        @product.state_id = '~'
         @product.valid?
-        expect(@product.errors.full_messages).to include "State is not a number"
+        expect(@product.errors.full_messages).to include 'State is not a number'
       end
 
       it 'delivery_charge_burden_idが空では出品できない' do
@@ -135,42 +135,42 @@ RSpec.describe Product, type: :model do
       it 'delivery_charge_burden_idが1では出品できない' do
         @product.delivery_charge_burden_id = 1
         @product.valid?
-        expect(@product.errors.full_messages).to include "Delivery charge burden must be other than 1"
+        expect(@product.errors.full_messages).to include 'Delivery charge burden must be other than 1'
       end
       it 'delivery_charge_burden_idが半角英字では出品できない' do
-        @product.delivery_charge_burden_id = "a"
+        @product.delivery_charge_burden_id = 'a'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Delivery charge burden is not a number"
+        expect(@product.errors.full_messages).to include 'Delivery charge burden is not a number'
       end
       it 'delivery_charge_burden_idが全角英字では出品できない' do
-        @product.delivery_charge_burden_id = "ａ"
+        @product.delivery_charge_burden_id = 'ａ'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Delivery charge burden is not a number"
+        expect(@product.errors.full_messages).to include 'Delivery charge burden is not a number'
       end
       it 'delivery_charge_burden_idがひらがなでは出品できない' do
-        @product.delivery_charge_burden_id = "あ"
+        @product.delivery_charge_burden_id = 'あ'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Delivery charge burden is not a number"
+        expect(@product.errors.full_messages).to include 'Delivery charge burden is not a number'
       end
       it 'delivery_charge_burden_idが半角ｶﾀｶﾅでは出品できない' do
-        @product.delivery_charge_burden_id = "ｱ"
+        @product.delivery_charge_burden_id = 'ｱ'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Delivery charge burden is not a number"
+        expect(@product.errors.full_messages).to include 'Delivery charge burden is not a number'
       end
       it 'delivery_charge_burden_idが全角カタカナでは出品できない' do
-        @product.delivery_charge_burden_id = "ア"
+        @product.delivery_charge_burden_id = 'ア'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Delivery charge burden is not a number"
+        expect(@product.errors.full_messages).to include 'Delivery charge burden is not a number'
       end
       it 'delivery_charge_burden_idが漢字では出品できない' do
-        @product.delivery_charge_burden_id = "漢"
+        @product.delivery_charge_burden_id = '漢'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Delivery charge burden is not a number"
+        expect(@product.errors.full_messages).to include 'Delivery charge burden is not a number'
       end
       it 'delivery_charge_burden_idが記号では出品できない' do
-        @product.delivery_charge_burden_id = "~"
+        @product.delivery_charge_burden_id = '~'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Delivery charge burden is not a number"
+        expect(@product.errors.full_messages).to include 'Delivery charge burden is not a number'
       end
 
       it 'prefecture_idが空では出品できない' do
@@ -181,42 +181,42 @@ RSpec.describe Product, type: :model do
       it 'prefecture_idが1では出品できない' do
         @product.prefecture_id = 1
         @product.valid?
-        expect(@product.errors.full_messages).to include "Prefecture must be other than 1"
+        expect(@product.errors.full_messages).to include 'Prefecture must be other than 1'
       end
       it 'prefecture_idが半角英字では出品できない' do
-        @product.prefecture_id = "a"
+        @product.prefecture_id = 'a'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Prefecture is not a number"
+        expect(@product.errors.full_messages).to include 'Prefecture is not a number'
       end
       it 'prefecture_idが全角英字では出品できない' do
-        @product.prefecture_id = "ａ"
+        @product.prefecture_id = 'ａ'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Prefecture is not a number"
+        expect(@product.errors.full_messages).to include 'Prefecture is not a number'
       end
       it 'prefecture_idがひらがなでは出品できない' do
-        @product.prefecture_id = "あ"
+        @product.prefecture_id = 'あ'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Prefecture is not a number"
+        expect(@product.errors.full_messages).to include 'Prefecture is not a number'
       end
       it 'prefecture_idが半角ｶﾀｶﾅでは出品できない' do
-        @product.prefecture_id = "ｱ"
+        @product.prefecture_id = 'ｱ'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Prefecture is not a number"
+        expect(@product.errors.full_messages).to include 'Prefecture is not a number'
       end
       it 'prefecture_idが全角カタカナでは出品できない' do
-        @product.prefecture_id = "ア"
+        @product.prefecture_id = 'ア'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Prefecture is not a number"
+        expect(@product.errors.full_messages).to include 'Prefecture is not a number'
       end
       it 'prefecture_idが漢字では出品できない' do
-        @product.prefecture_id = "漢"
+        @product.prefecture_id = '漢'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Prefecture is not a number"
+        expect(@product.errors.full_messages).to include 'Prefecture is not a number'
       end
       it 'prefecture_idが記号では出品できない' do
-        @product.prefecture_id = "~"
+        @product.prefecture_id = '~'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Prefecture is not a number"
+        expect(@product.errors.full_messages).to include 'Prefecture is not a number'
       end
 
       it 'delivery_day_idが空では出品できない' do
@@ -227,42 +227,42 @@ RSpec.describe Product, type: :model do
       it 'delivery_day_idが1では出品できない' do
         @product.delivery_day_id = 1
         @product.valid?
-        expect(@product.errors.full_messages).to include "Delivery day must be other than 1"
+        expect(@product.errors.full_messages).to include 'Delivery day must be other than 1'
       end
       it 'delivery_day_idが半角英字では出品できない' do
-        @product.delivery_day_id = "a"
+        @product.delivery_day_id = 'a'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Delivery day is not a number"
+        expect(@product.errors.full_messages).to include 'Delivery day is not a number'
       end
       it 'delivery_day_idが全角英字では出品できない' do
-        @product.delivery_day_id = "ａ"
+        @product.delivery_day_id = 'ａ'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Delivery day is not a number"
+        expect(@product.errors.full_messages).to include 'Delivery day is not a number'
       end
       it 'delivery_day_idがひらがなでは出品できない' do
-        @product.delivery_day_id = "あ"
+        @product.delivery_day_id = 'あ'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Delivery day is not a number"
+        expect(@product.errors.full_messages).to include 'Delivery day is not a number'
       end
       it 'delivery_day_idが半角ｶﾀｶﾅでは出品できない' do
-        @product.delivery_day_id = "ｱ"
+        @product.delivery_day_id = 'ｱ'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Delivery day is not a number"
+        expect(@product.errors.full_messages).to include 'Delivery day is not a number'
       end
       it 'delivery_day_idが全角カタカナでは出品できない' do
-        @product.delivery_day_id = "ア"
+        @product.delivery_day_id = 'ア'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Delivery day is not a number"
+        expect(@product.errors.full_messages).to include 'Delivery day is not a number'
       end
       it 'delivery_day_idが漢字では出品できない' do
-        @product.delivery_day_id = "漢"
+        @product.delivery_day_id = '漢'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Delivery day is not a number"
+        expect(@product.errors.full_messages).to include 'Delivery day is not a number'
       end
       it 'delivery_day_idが記号では出品できない' do
-        @product.delivery_day_id = "~"
+        @product.delivery_day_id = '~'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Delivery day is not a number"
+        expect(@product.errors.full_messages).to include 'Delivery day is not a number'
       end
 
       it 'priceが空では出品できない' do
@@ -271,39 +271,39 @@ RSpec.describe Product, type: :model do
         expect(@product.errors.full_messages).to include "Price can't be blank"
       end
       it 'priceが半角英字では出品できない' do
-        @product.price = "a"
+        @product.price = 'a'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Price is not a number"
+        expect(@product.errors.full_messages).to include 'Price is not a number'
       end
       it 'priceが全角英字では出品できない' do
-        @product.price = "ａ"
+        @product.price = 'ａ'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Price is not a number"
+        expect(@product.errors.full_messages).to include 'Price is not a number'
       end
       it 'priceがひらがなでは出品できない' do
-        @product.price = "あ"
+        @product.price = 'あ'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Price is not a number"
+        expect(@product.errors.full_messages).to include 'Price is not a number'
       end
       it 'priceが半角ｶﾀｶﾅでは出品できない' do
-        @product.price = "ｱ"
+        @product.price = 'ｱ'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Price is not a number"
+        expect(@product.errors.full_messages).to include 'Price is not a number'
       end
       it 'priceが全角カタカナでは出品できない' do
-        @product.price = "ア"
+        @product.price = 'ア'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Price is not a number"
+        expect(@product.errors.full_messages).to include 'Price is not a number'
       end
       it 'priceが漢字では出品できない' do
-        @product.price = "漢"
+        @product.price = '漢'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Price is not a number"
+        expect(@product.errors.full_messages).to include 'Price is not a number'
       end
       it 'priceが記号では出品できない' do
-        @product.price = "~"
+        @product.price = '~'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Price is not a number"
+        expect(@product.errors.full_messages).to include 'Price is not a number'
       end
 
       it 'imageが空では出品できない' do

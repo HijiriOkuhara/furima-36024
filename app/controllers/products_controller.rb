@@ -19,6 +19,7 @@ end
 
 private
 
-  def product_params
-    params.require(:product).permit(:name, :description, :category_id, :state_id, :delivery_charge_burden_id, :prefecture_id, :delivery_day_id, :price, :image).merge(user_id: current_user.id)
-  end
+def product_params
+  params.require(:product).permit(:name, :description, :category_id, :state_id, :delivery_charge_burden_id, :prefecture_id,
+                                  :delivery_day_id, :price, :image).merge(user_id: current_user.id)
+end

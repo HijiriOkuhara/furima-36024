@@ -6,11 +6,11 @@ class Product < ApplicationRecord
   validates :image, presence: true
   validates :name, presence: true, length: { maximum: 40 }
   validates :description, presence: true, length: { maximum: 1000 }
-  validates :category_id, presence: true, numericality: { other_than: 1 } 
-  validates :state_id, presence: true, numericality: { other_than: 1 } 
-  validates :delivery_charge_burden_id, presence: true, numericality: { other_than: 1 } 
-  validates :prefecture_id, presence: true, numericality: { other_than: 1 } 
-  validates :delivery_day_id, presence: true, numericality: { other_than: 1 } 
+  validates :category_id, presence: true, numericality: { other_than: 1 }
+  validates :state_id, presence: true, numericality: { other_than: 1 }
+  validates :delivery_charge_burden_id, presence: true, numericality: { other_than: 1 }
+  validates :prefecture_id, presence: true, numericality: { other_than: 1 }
+  validates :delivery_day_id, presence: true, numericality: { other_than: 1 }
   validates :price, presence: true, inclusion: { in: 300..9_999_999 }, numericality: true
   validates :user, presence: true
 end
