@@ -1,6 +1,10 @@
 class Product < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :category, :state, :delivery_charge_burden, :prefecture, :delivery_day
+  belongs_to :category
+  belongs_to :state
+  belongs_to :delivery_charge_burden
+  belongs_to :prefecture
+  belongs_to :delivery_day
   belongs_to :user
   has_one_attached :image
   validates :image, presence: true
