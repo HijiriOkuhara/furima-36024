@@ -1,31 +1,39 @@
 class OrdersController < ApplicationController
+
+  before_action :authenticate_user!, only: [:index]
+
   def index
-    @product = Product.find(params[:format])
+    @product = Product.find(params[:product_id])
+    @purchase_record_delivery_area = PurchaseRecordDeliveryArea.new
+    if current_user.id == @product.user_id || @product.purchase_record != nil
+      redirect_to root_path
+    end
   end
 
   def create
-    @order = Order.new(order_params)
-    if @order.valid?
+    @purchase_record_delivery_area = PurchaseRecordDeliveryArea.new(order_params)
+    @product =  Product.find(order_params[:product_id])
+    if @purchase_record_delivery_area.valid?
       pay_item
-      @order.save
-      return redirect_to root_path
+      @purchase_record_delivery_area.save
+      redirect_to root_path
     else
-      render 'index'
+      render :index
     end
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:price).merge(token: params[:token])
+    params.require(:purchase_record_delivery_area).permit(:postal_code, :prefecture, :city, :block, :building_name, :phone_number, :product_id, :user_id).merge(user_id: current_user.id, product_id: params[:product_id], token: params[:token])
   end
 
   def pay_item
-    Payjp.api_key = "" # テスト秘密鍵
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
-      amount: order_params[:price],  # 商品の値段
-      card: order_params[:token],    # カードトークン
-      currency: 'jpy'                 # 通貨の種類（日本円）
+      amount: Product.find(order_params[:product_id])[:price],
+      card: order_params[:token],
+      currency: 'jpy'
     )
   end
 
