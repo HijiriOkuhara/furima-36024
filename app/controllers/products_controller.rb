@@ -18,7 +18,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-    # binding.pry
     @product = Product.find(params[:id])
   end
 end
