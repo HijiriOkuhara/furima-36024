@@ -154,8 +154,8 @@ RSpec.describe PurchaseRecordDeliveryArea, type: :model do
         @purchase_record_delivery_area.valid?
         expect(@purchase_record_delivery_area.errors.full_messages).to include('Phone number is invalid. Input only number')
       end
-      it 'phone_numberが11桁未満だと保存できない' do
-        @purchase_record_delivery_area.phone_number = '1234567890'
+      it 'phone_numberが10桁未満だと保存できない' do
+        @purchase_record_delivery_area.phone_number = '123456789'
         @purchase_record_delivery_area.valid?
         expect(@purchase_record_delivery_area.errors.full_messages).to include('Phone number is too short')
       end
