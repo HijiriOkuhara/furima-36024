@@ -1,15 +1,14 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index]
+  before_action :set_product
 
   def index
-    @product = Product.find(params[:product_id])
     @purchase_record_delivery_area = PurchaseRecordDeliveryArea.new
     redirect_to root_path if current_user.id == @product.user_id || !@product.purchase_record.nil?
   end
 
   def create
     @purchase_record_delivery_area = PurchaseRecordDeliveryArea.new(order_params)
-    @product = Product.find(order_params[:product_id])
     if @purchase_record_delivery_area.valid?
       pay_item
       @purchase_record_delivery_area.save
@@ -34,5 +33,9 @@ class OrdersController < ApplicationController
       card: order_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def set_product
+    @product = Product.find(params[:product_id])
   end
 end
