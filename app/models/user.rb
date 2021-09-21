@@ -14,7 +14,7 @@ class User < ApplicationRecord
     end
   end
   validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z{6}/i }
-  
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :products
