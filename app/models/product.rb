@@ -7,13 +7,20 @@ class Product < ApplicationRecord
   belongs_to :delivery_day
   belongs_to :user
   has_one_attached :image
-  validates :image, presence: true
-  validates :name, presence: true, length: { maximum: 40 }
-  validates :description, presence: true, length: { maximum: 1000 }
-  validates :category_id, presence: true, numericality: { other_than: 1 }
-  validates :state_id, presence: true, numericality: { other_than: 1 }
-  validates :delivery_charge_burden_id, presence: true, numericality: { other_than: 1 }
-  validates :prefecture_id, presence: true, numericality: { other_than: 1 }
-  validates :delivery_day_id, presence: true, numericality: { other_than: 1 }
-  validates :price, presence: true, inclusion: { in: 300..9_999_999 }, numericality: true
+  has_one :purchase_record
+
+  with_options presence: true do
+    validates :image
+    validates :name, length: { maximum: 40 }
+    validates :description, length: { maximum: 1000 }
+    validates :price, inclusion: { in: 300..9_999_999, message: 'is out of setting range' },
+                      numericality: { message: 'is invalid. Input half-width characters' }
+    with_options numericality: { other_than: 1, message: "can't be blank" } do
+      validates :category_id
+      validates :state_id
+      validates :delivery_charge_burden_id
+      validates :prefecture_id
+      validates :delivery_day_id
+    end
+  end
 end
